@@ -15,6 +15,15 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/sate
 	accessToken: API_KEY
 });
 
+// Add a dark layer
+let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    accessToken: API_KEY
+});
+
+
+
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
 	center: [40.7, -94.5],
@@ -25,7 +34,8 @@ let map = L.map('mapid', {
 // Create a base layer that holds all three maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite": satelliteStreets
+  "Satellite": satelliteStreets,
+  "Dark": dark
 };
 
 // 1. Add a 3rd layer group for the major earthquake data.
@@ -47,7 +57,7 @@ let overlays = {
 L.control.layers(baseMaps, overlays).addTo(map);
 
 // Retrieve the earthquake GeoJSON data.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
 
   // This function returns the style data for each of the earthquakes we plot on
   // the map. We pass the magnitude of the earthquake into two separate functions
@@ -113,7 +123,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
   allEarthquakes.addTo(map);
 
 // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
 
 // 4. Use the same style as the earthquake data.
 function styleInfo(feature) {
@@ -202,10 +212,10 @@ legend.onAdd = function() {
 
   // Use d3.json to make a call to get our Tectonic Plate geoJSON data.
 
-  d3.json("https://github.com/fraxen/tectonicplates/blob/master/GeoJSON/PB2002_boundaries.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then((data) => {
     console.log(data);  
     L.geoJson(data, {
-      style: {color: "#703606", weight: 3},
+      style: {color: "Red", weight: 3},
     }).addTo(tectonicPlates); 
   });
   
