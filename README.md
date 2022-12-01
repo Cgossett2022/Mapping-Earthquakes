@@ -11,6 +11,11 @@ For this project, I built a map which shows the magnitudes of earthquakes all ov
 ## Results
 Once I completed the steps above, my map had the following capabilities:
 
+- Displays Tectonic Plate Locations
+
+<img width="2240" alt="Tectonic Plates" src="https://user-images.githubusercontent.com/111243284/204960129-0e6c7e28-1d5e-4b9e-8edd-ef2dcbb91595.png">
+
+
 - Displays Tectonic Plates and Earthquakes
 
 <img width="2240" alt="Tectonic Plates and Earthquakes" src="https://user-images.githubusercontent.com/111243284/204959534-97d8f2dd-3452-4b5c-a42e-3e7a2699fc6f.png">
