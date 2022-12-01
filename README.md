@@ -31,5 +31,5 @@ Once I completed the steps above, my map had the following capabilities:
 
 <img width="2240" alt="Dark Map" src="https://user-images.githubusercontent.com/111243284/204960002-3a9a9486-b2e7-4d0f-a5ff-83a588df7ff5.png">
 
-## Summary
+## Map
 
