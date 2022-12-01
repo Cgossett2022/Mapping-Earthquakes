@@ -33,4 +33,4 @@ Once I completed the steps above, my map had the following capabilities:
 
 ## Map
 The interactive map can be found in the link below:
-
+http://localhost:52330/Earthquake_Challenge/index.html
